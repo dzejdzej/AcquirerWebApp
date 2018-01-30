@@ -1,0 +1,80 @@
+<div class="container-fluid">
+
+    <ngx-loading [show]="waiting" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+  
+
+    <p>Merchant: {{merchantId}}</p> <p>Amount: {{amount}}</p> <p>Expiration: {{vreme}}</p>
+  <form [formGroup]="form" class="form-horizontal" style="width: 500px;">
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-4">
+          <label class="control-label required">PAN:</label>
+          <br>
+        </div>
+        <div class="col-lg-8">
+          <input class="form-control" required [(ngModel)]="formData.pan" type="text" formControlName="pan">
+          <app-field-error-display [displayError]="isFieldValidForm('pan')" errorMsg="PAN je obavezan."></app-field-error-display>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-4">
+          <label class="control-label required">Security code:</label>
+          <br>
+        </div>
+        <div class="col-lg-8">
+          <input class="form-control" formControlName="securityCode" required [(ngModel)]="formData.securityCode" type="text">
+          <app-field-error-display [displayError]="isFieldValidForm('securityCode')" errorMsg="Security code je obavezan."></app-field-error-display>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-4">
+          <label class="control-label required">Card holder name:</label>
+          <br>
+        </div>
+        <div class="col-lg-8">
+          <input class="form-control" required formControlName="cardHolderName" [(ngModel)]="formData.cardHolderName"
+            type="text">
+          <app-field-error-display [displayError]="isFieldValidForm('cardHolderName')" errorMsg="Card holder name je obavezan."></app-field-error-display>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-4">
+          <label class="control-label required">Expiration month:</label>
+          <br>
+        </div>
+        <div class="col-lg-8">
+          <input class="form-control" required formControlName="expirationMonth" [(ngModel)]="formData.expirationMonth" type="text">
+          <app-field-error-display [displayError]="isFieldValidForm('expirationMonth')" errorMsg="Expiration je obavezan. Unesite vrednost u sledecem obliku npr. 10.01.2018 kao 01/18."></app-field-error-display>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-lg-4">
+          <label class="control-label required">Expiration year:</label>
+          <br>
+        </div>
+        <div class="col-lg-8">
+          <input class="form-control" required formControlName="expirationYear" [(ngModel)]="formData.expirationYear" type="text">
+          <app-field-error-display [displayError]="isFieldValidForm('expirationYear')" errorMsg="Expiration je obavezan. Unesite vrednost u sledecem obliku npr. 10.01.2018 kao 01/18."></app-field-error-display>
+        </div>
+      </div>
+    </div>
+   
+
+    <div class="form-group">
+      <label class="col-md-3 control-label"></label>
+      <div align="center">
+        <button pButton class="ui-button-primary" type="submit" icon="fa-plus" (click)="kupi()" label="Kupi"></button>
+      </div>
+    </div>
+  </form>
+</div>
